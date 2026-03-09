@@ -1,0 +1,140 @@
+### startup
+exec swaync
+exec swww-daemon
+exec waybar
+exec waybar -c ~/.config/waybar/configbottom.jsonc -s ~/.config/waybar/stylebottom.css
+exec xwayland-satellite
+
+### gaps
+gaps inner 8
+gaps outer 0
+
+### borders
+default_border pixel 1
+client.focused   #ebdbb266 #ebdbb266 #ffffff #ebdbb266
+client.unfocused #0e0e0e   #0e0e0e   #888888 #0e0e0e
+
+### floating rule (firefox pip)
+for_window [app_id="firefox" title="Picture-in-Picture"] floating enable
+
+set $mod Mod4
+
+### sway controls
+bindsym $mod+Shift+r reload
+bindsym $mod+Shift+e exit
+bindsym $mod+Shift+slash exec swaymsg -t get_binding_state
+
+### apps
+bindsym $mod+t exec kitty
+bindsym $mod+q exec firefox
+bindsym Alt+space exec wofi --show drun --prompt "Find..."
+bindsym $mod+x exec wofi-emoji
+bindsym $mod+l exec hyprlock
+bindsym $mod+e exec nautilus
+bindsym $mod+Escape exec nwg-bar
+bindsym $mod+n exec swaync-client -t
+bindsym $mod+z exec waypaper
+
+### volume
+bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+
+bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-
+bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+bindsym XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+
+### media
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPause exec playerctl play-pause
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPrev exec playerctl previous
+
+### brightness
+bindsym XF86MonBrightnessUp exec brightnessctl --class=backlight set +10%
+bindsym XF86MonBrightnessDown exec brightnessctl --class=backlight set 10%-
+
+### window controls
+bindsym $mod+w kill
+bindsym $mod+v floating toggle
+bindsym $mod+f fullscreen toggle
+bindsym $mod+a focus parent
+
+### focus
+bindsym $mod+Left focus left
+bindsym $mod+Right focus right
+bindsym $mod+Up focus up
+bindsym $mod+Down focus down
+
+### move containers
+bindsym $mod+Ctrl+Left move left
+bindsym $mod+Ctrl+Right move right
+bindsym $mod+Ctrl+Up move up
+bindsym $mod+Ctrl+Down move down
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Down move down
+
+### workspaces
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+
+bindsym $mod+Shift+1 move container to workspace number 1; workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2; workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3; workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4; workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5; workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6; workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7; workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8; workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9; workspace number 9
+
+bindsym $mod+Ctrl+1 move container to workspace number 1
+bindsym $mod+Ctrl+2 move container to workspace number 2
+bindsym $mod+Ctrl+3 move container to workspace number 3
+bindsym $mod+Ctrl+4 move container to workspace number 4
+bindsym $mod+Ctrl+5 move container to workspace number 5
+bindsym $mod+Ctrl+6 move container to workspace number 6
+bindsym $mod+Ctrl+7 move container to workspace number 7
+bindsym $mod+Ctrl+8 move container to workspace number 8
+bindsym $mod+Ctrl+9 move container to workspace number 9
+
+bindsym $mod+Tab workspace back_and_forth
+
+### layout
+bindsym $mod+k layout toggle split
+
+### scratchpad
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+bindsym $mod+Shift+Backspace scratchpad hide  # <-- added, optional quick hide
+
+### resize mode
+mode "resize" {
+    bindsym Left resize shrink width 10px
+    bindsym Right resize grow width 10px
+    bindsym Up resize shrink height 10px
+    bindsym Down resize grow height 10px
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode resize
+
+### mouse
+floating_modifier $mod normal
+
+### screenshot
+bindsym $mod+Shift+s exec flameshot gui
+
+### extras / missing
+bindsym $mod+Shift+f toggle floating  # sometimes handy
+bindsym $mod+Shift+space focus floating  # quick focus floating
+bindsym $mod+Shift+l reload  # quick reload layout if needed
+bindsym $mod+Shift+p exec swaync-client -p  # example media control shortcut
