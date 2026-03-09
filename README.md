@@ -16,10 +16,10 @@ ttf-jetbrains-mono-nerd
 ```
 Recommended install (backup first, this overwrites your existing dotfiles)
 ```bash
-git clone https://github.com/zyro-or-xyro/coreshell
+git clone https://github.com/zyro-or-xyro/coreshell-sway
 cd .config
 rm -rf btop kitty sway waybar wofi fastfetch matugen nwg-bar waypaper
-cd ~/coreshell/dotfiles
+cd ~/coreshell-sway/dotfiles
 mv -r * ~/.config
 cd ..
 mv .zshrc ~/
