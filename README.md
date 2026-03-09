@@ -7,6 +7,7 @@ swww
 awww
 eza
 fastfetch
+sway
 waybar
 nwg-bar
 waypaper
@@ -17,7 +18,7 @@ Recommended install (backup first, this overwrites your existing dotfiles)
 ```bash
 git clone https://github.com/zyro-or-xyro/coreshell
 cd .config
-rm -rf btop kitty niri waybar wofi fastfetch matugen nwg-bar waypaper
+rm -rf btop kitty sway waybar wofi fastfetch matugen nwg-bar waypaper
 cd ~/coreshell/dotfiles
 mv -r * ~/.config
 cd ..
